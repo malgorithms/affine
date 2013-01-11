@@ -14,18 +14,31 @@ For your convenience, this project is stitched into one JS file, `affine.js`. Th
  var affine  = require('affine');
  var polygon = require('polygon');
 
+ // let's define some affine transformations
+
  var rot_left  = new affine.rotation(  Math.PI / 4);
  var rot_right = new affine.rotation( -Math.PI / 4);
  var go_big    = new affine.scaling (  2,   4);
  var go_small  = new affine.scaling (  0.5, 0.25);
- 
+
+ // copy the original transform and compose with all these 
  var t = rot_left.copy();
- // rightComposing a transform A with another, A'
- // desctructively replaces A with A'(A)
  t.rightComposeWith(rot_right);
  t.rightComposeWith(go_big);
  t.rightComposeWith(go_small);
- 
+
+ // alternatively, we don't really need to make
+ // all these new transforms; given one we can 
+ // rotate, etc., it with convenience functions
+ t.rotate(0.234);
+ t.rotate(-0.234);
+ t.scale(1,2);
+ t.scale(1,0.5);
+
+ // a transformation also has exposed functions,
+ // so you don't have to explicitly make new
+ // transforms 
+
  var square = polygon.factory.unitSquare();
  
  document.write("<h3>Square before</h3>");
@@ -33,7 +46,8 @@ For your convenience, this project is stitched into one JS file, `affine.js`. Th
  
  document.write("<h3>Square after (should be the same)</h3>");
  square.transform(t);
- document.write(JSON.stringify(square));
+ document.write(JSON.stringify(square)); 
+
 </script>
 ```
 

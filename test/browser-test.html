@@ -14,10 +14,19 @@
 			var go_small  = new affine.scaling (  0.5, 0.25);
 
 			var do_nothing = rot_left.copy();
+
+      // compose it with some other affines
 			do_nothing.rightComposeWith(rot_right);
 			do_nothing.rightComposeWith(go_big);
 			do_nothing.rightComposeWith(go_small);
 
+      // directly manipulate it
+      do_nothing.rotate(0.234);
+      do_nothing.rotate(-0.234);
+      do_nothing.scale(1,2);
+      do_nothing.scale(1,0.5);
+
+      // apply it to a square
 			var square = polygon.factory.unitSquare();
 
 			document.write("<h3>Square before</h3>");
