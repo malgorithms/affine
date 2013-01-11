@@ -69,6 +69,20 @@ class affine2d
 
   copy: -> new affine2d @
 
+  setCtxTransform: (ctx) ->
+    ###
+    if you have an HTML5 canvas and want to **set**
+    its transform to match this affine, use this
+    ###
+    ctx.setTransform @m00, @m10, @m01, @m11, @v0, @v1
+
+  applyToCtx: (ctx) ->
+    ###
+    if you have an HTML5 canvas and want to **apply**
+    this transform to its existing one, use this
+    ###
+    ctx.transform @m00, @m10, @m01, @m11, @v0, @v1
+
   transformPair: (v0, v1) ->
     # returns a pair array
     t0 = @m00 * v0 + @m01 * v1 + @v0
