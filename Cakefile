@@ -6,13 +6,9 @@ task 'build', 'build the node module', (cb) ->
   console.log "Building"
   files = fs.readdirSync 'src'
   files = ('src/' + file for file in files when file.match(/\.coffee$/))
-  # clear lib folder
   clearLibJs ->
-    # build lib folder
     runCoffee ['-c', '-o', 'lib/'].concat(files), ->
-      # stitch to one JS for browser use
       stitchIt ->
-        # make available for nodeJS
         runCoffee ['-c', 'index.coffee'], ->
           console.log "Done building."
           cb() if typeof cb is 'function'
