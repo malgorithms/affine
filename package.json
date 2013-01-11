@@ -1,0 +1,24 @@
+{
+ "name": "affine",
+ "description": "A library for basic 2D affine transformations",
+ "version": "0.0.1",
+ "directories": {
+  "lib": "./lib"
+ },
+ "main": "index.js",
+ "author": "Chris Coyne <ccoyne77@gmail.com>",
+ "repository": {
+  "type": "git",
+  "url": "http://github.com/malgorithms/affine"
+ },
+ "devDependencies": {
+  "coffee-script": "*",
+  "stitch": "*"
+ },
+ "licenses": [
+  {
+   "type": "MIT",
+   "url": "http://github.com/malgorithms/affine/raw/master/LICENSE"
+  }
+ ]
+}
