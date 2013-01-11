@@ -3,10 +3,21 @@ Explanation
 A small JS Library for doing affine transformations and (coming soon) other simple transformations
 I need for a bigger project. `affine` and `polygon` are currently the two exports.
 
+
+Node Use
+=========
+```
+ npm install -g affine
+```
+
 Browser Use
 ===========
+
 For your convenience, this project is stitched into one JS file, `affine.js`. The stitched file provides a way of requiring components. Here's an in-browser example:
 
+
+Example Code
+============
 
 ```html
 <script src="affine.js"></script>
@@ -51,11 +62,6 @@ For your convenience, this project is stitched into one JS file, `affine.js`. Th
 </script>
 ```
 
-Node Installation
-=================
-```
-npm install -g affine
-```
 
 Usage (CoffeeScript example)
 ============================
@@ -74,7 +80,11 @@ t = rot_left.copy()
 t.rightComposeWith rot_right
 t.rightComposeWith go_big
 t.rightComposeWith go_small
-
+t.rotate 0.234
+t.rotate -0.234
+t.scale 1, 2
+t.scale 1, 0.5
+ 
 square = polygon.factory.unitSquare()
 square.transform t
 
